@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Fight for the Future, defending our basic rights and freedoms</title>
+    <link rel="icon" href="homepage/images/heart.png">
+
+    <meta name="description" content="Fight for the Future is dedicated to protecting and expanding the Internet's transformative power in our lives by creating civic campaigns that are engaging for millions of people.">
+    <meta name="google-site-verification" content="RA_POCdgh3gHSCy5g8X6xhMuu-t03xSQDWID-vbkhJ4">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Above the fold styles -->
+    <style>
+    html, body {
+        margin: 0;
+    }
+
+    body {
+        font-family: Verdana, sans-serif;
+    }
+
+    header {
+        position: relative;
+        height: 370px;
+    }
+
+    header .david-by-michelangelo {
+        background-color: #4586ac;
+        background-image: url(homepage/images/david-by-michelangelo.jpg);
+        background-size: cover;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+    }
+
+    header nav {
+        text-align: center;
+        padding: 26px 0 0;
+    }
+
+    header nav a {
+        color: white;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 34px;
+        padding: 0 14px;
+        text-decoration: none;
+        text-transform: uppercase;
+        vertical-align: middle;
+    }
+
+    header nav a.donate {
+        border: 1px solid #fff;
+        border-radius: 50px;
+    }
+
+    header nav a.donate:hover {
+        background-color: #fff;
+        color: #000;
+    }
+
+    header nav a.facebook,
+    header nav a.twitter {
+        height: 42px;
+        padding: 0;
+        width: 42px;
+    }
+
+    header nav a.facebook {
+        background-image: url(homepage/images/social-facebook.png);
+        margin-left: 20px;
+    }
+
+    header nav a.twitter {
+        background-image: url(homepage/images/social-twitter.png);
+        margin-left: 4px;
+    }
+
+    header .logo-large {
+        display: block;
+        margin: 52px auto 24px;
+        max-width: 90%;
+    }
+
+    header .motto {
+        color: #fff;
+        font-family: Times, serif;
+        font-size: 22px;
+        font-style: italic;
+        margin: 0 auto;
+        text-align: center;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+    </style>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700">
+</head>
+<body>
+
+    <header>
+        <div class="david-by-michelangelo"></div>
+        <nav>
+            <a href="aboutus/">about us</a>
+            <a href="history/">projects</a>
+            <a href="press/">press</a>
+            <a href="jobs/">jobs</a>
+            <a href="supporters/">supporters</a>
+            <a href="http://shop.fightforthefuture.org/">store</a>
+            <a href="https://donate.fightforthefuture.org/" class="donate">donate</a>
+            <a href="https://www.facebook.com/fightfortheftr" class="facebook"></a>
+            <a href="https://twitter.com/fightfortheftr" class="twitter"></a>
+            </ul>
+        </nav>
+
+        <img src="homepage/images/fight-for-the-future-large.png" class="logo-large">
+
+        <div class="motto">A nonprofit working to expand the internet's power for good</div>
+    </header>
+
+    <script>
+    // Let's selectively bust browser caches
+    var buster = '?buster=' + Date.now();
+
+    if (navigator.userAgent.match(/MSIE [5-9]/)) {
+        loadJS('homepage/js/outdated.js' + buster);
+    } else if (document.readyState === "complete") {
+        loadAdditionalResources();
+    } else {
+        window.addEventListener('load', loadAdditionalResources);
+    }
+
+    function loadAdditionalResources() {
+        innerHeight; // Paint before fetching new assets
+
+        loadCSS('homepage/css/homepage.css' + buster);
+        loadJS('homepage/js/homepage.js' + buster);
+    }
+
+    function loadCSS(href) {
+        var link = document.createElement('link');
+        link.setAttribute('href', href);
+        link.setAttribute('rel', 'stylesheet');
+        document.head.appendChild(link);
+    }
+
+    function loadJS(src) {
+        var script = document.createElement('script');
+        script.setAttribute('src', src);
+        document.body.appendChild(script);
+    }
+    </script>
+
+</body>
+</html>
