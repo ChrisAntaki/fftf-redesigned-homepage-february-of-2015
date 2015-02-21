@@ -16,6 +16,7 @@
     }
 
     body {
+        background-color: #16212a;
         font-family: Verdana, sans-serif;
     }
 
@@ -40,7 +41,7 @@
     }
 
     header nav a {
-        color: white;
+        color: #fff;
         display: inline-block;
         font-size: 14px;
         font-weight: bold;
@@ -84,23 +85,169 @@
         max-width: 90%;
     }
 
+    header .logo-small {
+        display: none;
+        margin: 52px auto 24px;
+        max-width: 90%;
+    }
+
     header .motto {
         color: #fff;
         font-family: Times, serif;
         font-size: 22px;
         font-style: italic;
         margin: 0 auto;
+        padding: 0 32px;
         text-align: center;
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     }
+
+    header .mobile-navigation {
+        background-color: #051d2c;
+        display: none;
+        height: 50px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    header .mobile-navigation .cheeseburger {
+        float: right;
+        height: 50px;
+        background-color: #03263d;
+        width: 50px;
+    }
+
+    section.below-the-fold {
+        color: #fff;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 200;
+        margin: 0 auto;
+        max-width: 100%;
+        overflow: hidden;
+        padding: 50px 16px;
+        width: 970px;
+
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+    }
+
+    section.below-the-fold .statement {
+        float: left;
+        line-height: 28px;
+        font-size: 18px;
+        letter-spacing: 0.3px;
+        width: calc(100% - 432px);
+    }
+
+    section.below-the-fold form {
+        float: right;
+        padding-bottom: 64px;
+        max-width: 370px;
+    }
+
+    section.below-the-fold form h2 {
+        font-size: 33px;
+        font-weight: 200;
+        line-height: 1.2;
+        margin: 0 0 30px;
+    }
+
+    section.below-the-fold form input {
+        border-radius: 50px;
+        border: none;
+        float: left;
+        font-size: 17px;
+        margin: 0 12px 0 0;
+        padding: 0 25px;
+        line-height: 48px;
+        width: 200px;
+    }
+
+    section.below-the-fold form button {
+        background-color: #14a767;
+        border-radius: 50px;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        float: left;
+        font-family: "Helvetica";
+        font-size: 16px;
+        line-height: 48px;
+        padding: 0 10px;
+        width: 105px;
+
+        -webkit-transition: background-color 0.3s;
+                transition: background-color 0.3s;
+    }
+
+    section.below-the-fold form button:hover {
+        background-color: #26485e;
+    }
+
+    section.below-the-fold form .privacy {
+        clear: both;
+        color: #909fac;
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        padding: 28px 0 0;
+    }
+
+    section.below-the-fold form .privacy a {
+        color: #23d79e;
+    }
+
+    @media screen and (max-width: 860px) {
+        header nav a.facebook,
+        header nav a.twitter {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        header {
+            height: 290px;
+        }
+
+        header .mobile-navigation {
+            display: block;
+        }
+
+        header nav {
+            display: none;
+        }
+
+        header .logo-large {
+            display: none;
+        }
+
+        header .logo-small {
+            display: block;
+        }
+
+        section.below-the-fold .statement,
+        section.below-the-fold form {
+            float: none;
+            margin: 0 auto;
+            width: 100%;
+        }
+    }
     </style>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:200,400,700">
 </head>
 <body>
 
     <header>
         <div class="david-by-michelangelo"></div>
+
+        <div class="mobile-navigation">
+            <div class="cheeseburger">
+                <div class="lines"></div>
+            </div>
+        </div>
+
         <nav>
             <a href="aboutus/">about us</a>
             <a href="history/">projects</a>
@@ -114,10 +261,37 @@
             </ul>
         </nav>
 
-        <img src="homepage/images/fight-for-the-future-large.png" class="logo-large">
+        <img src="homepage/images/fight-for-the-future-943px.png" class="logo-large">
+        <img src="homepage/images/fight-for-the-future-320px.png" class="logo-small">
 
         <div class="motto">A nonprofit working to expand the internet's power for good</div>
     </header>
+
+    <section class="below-the-fold">
+        <form>
+            <h2>Find out about threats to our basic rights.</h2>
+
+            <input value="fftfsite" name="tag" type="hidden">
+            <input value="en" name="member[language]" type="hidden">
+            <input value="true" name="salsa" type="hidden">
+            <input value="en" name="language_id" type="hidden">
+            <input value="1" name="member[movement_id]" type="hidden">
+            <input id="#user_agent" value="" name="member[user_agent]" type="hidden">
+            <input id="#ip_address" value="" name="member[ip_address]" type="hidden">
+            <input style="display: none;" placeholder="Please leave this field blank" name="guard" type="text">
+            <input value="1" name="action" type="hidden">
+            <input id="id_email" name="member[email]" placeholder="Your Email" type="email">
+            <button type="submit">SIGN UP</button>
+
+            <div class="privacy">
+                We will only email when we have something important or awesome to tell you. <a href="privacy/">Privacy.</a>
+            </div>
+        </form>
+
+        <div class="statement">
+            Fight for the Future is dedicated to protecting and expanding the Internet's transformative power in our lives by creating civic campaigns that are engaging for millions of people. Alongside internet users everywhere we beat back attempts to limit our basic rights and freedoms, and empower people to demand technology (and policy) that serves their interests. Activating the internet for the public good can only lead to a more vibrant and awesome world. More coming soon.
+        </div>
+    </section>
 
     <script>
     // Let's selectively bust browser caches

@@ -1,0 +1,72 @@
+header .mobile-navigation .cheeseburger {
+    cursor: pointer;
+    position: relative;
+}
+
+header .mobile-navigation .cheeseburger .lines {
+    /* this span is the central line of the menu icon */
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    width: 18px;
+    height: 2px;
+    background-color: white;
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+    /* these are the upper and lower lines in the menu icon */
+}
+
+header .mobile-navigation .cheeseburger .lines::before,
+header .mobile-navigation .cheeseburger .lines:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+    right: 0;
+    -webkit-transition: -webkit-transform .3s, top .3s, background-color 0s;
+    -moz-transition: -moz-transform .3s, top .3s, background-color 0s;
+    transition: transform .3s, top .3s, background-color 0s;
+}
+
+header .mobile-navigation .cheeseburger .lines::before {
+    top: -5px;
+}
+
+header .mobile-navigation .cheeseburger .lines::after {
+    top: 5px;
+}
+
+header .mobile-navigation .cheeseburger .lines.is-clicked { background-color: rgba(255, 255, 255, 0) }
+
+header .mobile-navigation .cheeseburger .lines.is-clicked::before,
+header .mobile-navigation .cheeseburger .lines.is-clicked::after {
+    background-color: white;
+}
+
+header .mobile-navigation .cheeseburger .lines.is-clicked::before {
+    top: 0;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+
+header .mobile-navigation .cheeseburger .lines.is-clicked::after {
+    top: 0;
+    -webkit-transform: rotate(225deg);
+    -moz-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    -o-transform: rotate(225deg);
+    transform: rotate(225deg);
+}
