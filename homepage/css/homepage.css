@@ -140,9 +140,61 @@ section.additional-sections {
     max-width: 100%;
     overflow: hidden;
     padding: 50px 16px 50px;
-    width: 970px;
+    width: 980px;
 
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
+}
+
+section.additional-sections .projects {
+    text-align: center;
+}
+
+section.additional-sections .projects h4 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    margin: 12px 0 32px;
+}
+
+section.additional-sections .projects h4 a {
+    color: #14a767;
+}
+
+section.additional-sections .projects .project {
+    background-color: #1b1b1c;
+    display: inline-block;
+    height: 268px;
+    text-align: center;
+    width: 226px;
+    vertical-align: bottom;
+    overflow: hidden;
+    margin: 5px;
+}
+
+section.additional-sections .projects .project img {
+    border: none;
+    margin: 10px 0 0;
+}
+
+section.additional-sections .projects .project h5 {
+    font-size: 12px;
+    margin: 12px;
+    text-align: left;
+}
+
+section.additional-sections .projects .project p {
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0 12px;
+    text-align: left;
+}
+
+section.additional-sections .projects .project span a {
+    color: #14a767;
+    display: block;
+    font-weight: 400;
+    line-height: 1.3;
 }
