@@ -55,9 +55,34 @@
 
 
 
+// Additional Sections
+(function(){
+    var container = document.querySelector('.additional-sections');
+
+    new AdditionalSection('Feeds');
+})();
+
+
+
 /*
  * Modules
  */
+
+
+
+function AdditionalSection(name) {
+    var container = document.querySelector('.additional-sections');
+    var element = document.createElement('div');
+    container.appendChild(element);
+
+    new AJAX({
+        url: 'homepage/sections/' + name + '.html',
+        success: function(e) {
+            element.className = ' fadeIn ';
+            element.innerHTML = e.target.responseText;
+        }
+    });
+}
 
 
 

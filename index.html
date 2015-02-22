@@ -137,15 +137,15 @@
 
     section.below-the-fold .statement {
         float: left;
-        line-height: 28px;
         font-size: 18px;
         letter-spacing: 0.3px;
+        line-height: 28px;
         width: calc(100% - 444px);
     }
 
     section.below-the-fold form {
         float: right;
-        padding-bottom: 64px;
+        padding-bottom: 50px;
         max-width: 370px;
     }
 
@@ -312,14 +312,20 @@
         </div>
     </section>
 
+    <section class="additional-sections"></section>
+
     <script>
     // Let's selectively bust browser caches
     var buster = '?buster=' + Date.now();
 
+    var loadAdditionalResourcesTimeout;
     if (navigator.userAgent.match(/MSIE [5-9]/)) {
         loadJS('homepage/js/outdated.js' + buster);
+    } else if (document.readyState === "complete") {
+        loadAdditionalResources();
     } else {
-        setTimeout(loadAdditionalResources, 16);
+        window.addEventListener('load', loadAdditionalResources, false);
+        loadAdditionalResourcesTimeout = setTimeout(loadAdditionalResources, 1e3);
     }
 
     function loadAdditionalResources() {
@@ -327,6 +333,9 @@
 
         loadCSS('homepage/css/homepage.css' + buster);
         loadJS('homepage/js/homepage.js' + buster);
+
+        removeEventListener('load', loadAdditionalResources, false);
+        clearTimeout(loadAdditionalResourcesTimeout);
     }
 
     function loadCSS(href) {
