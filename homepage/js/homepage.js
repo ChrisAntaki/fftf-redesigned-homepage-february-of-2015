@@ -61,6 +61,7 @@
 
     new AdditionalSection('Feeds');
     new AdditionalSection('Projects');
+    new AdditionalSection('Footer');
 })();
 
 
