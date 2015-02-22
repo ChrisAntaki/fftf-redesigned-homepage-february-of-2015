@@ -147,7 +147,5 @@ AJAX.prototype.serializeForm = function(form) {
         }
     }
 
-    console.log(q);
-
     return q.join("&");
 };
