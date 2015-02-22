@@ -73,16 +73,16 @@ header .mobile-navigation .cheeseburger .lines::after {
     top: 5px;
 }
 
-header .mobile-navigation .cheeseburger .lines.is-clicked {
+header.mobile-navigation-is-expanded .mobile-navigation .cheeseburger .lines {
     background-color: rgba(255, 255, 255, 0);
 }
 
-header .mobile-navigation .cheeseburger .lines.is-clicked::before,
-header .mobile-navigation .cheeseburger .lines.is-clicked::after {
+header.mobile-navigation-is-expanded .mobile-navigation .cheeseburger .lines::before,
+header.mobile-navigation-is-expanded .mobile-navigation .cheeseburger .lines::after {
     background-color: white;
 }
 
-header .mobile-navigation .cheeseburger .lines.is-clicked::before {
+header.mobile-navigation-is-expanded .mobile-navigation .cheeseburger .lines::before {
     top: 0;
     -webkit-transform: rotate(135deg);
     -moz-transform: rotate(135deg);
@@ -91,11 +91,43 @@ header .mobile-navigation .cheeseburger .lines.is-clicked::before {
     transform: rotate(135deg);
 }
 
-header .mobile-navigation .cheeseburger .lines.is-clicked::after {
+header.mobile-navigation-is-expanded .mobile-navigation .cheeseburger .lines::after {
     top: 0;
     -webkit-transform: rotate(225deg);
     -moz-transform: rotate(225deg);
     -ms-transform: rotate(225deg);
     -o-transform: rotate(225deg);
     transform: rotate(225deg);
+}
+
+@media screen and (max-width: 767px) {
+    header.mobile-navigation-is-expanded nav {
+        background-color: #03263d;
+        display: block;
+        position: absolute;
+        padding: 16px 0;
+        width: 100%;
+    }
+
+    header.mobile-navigation-is-expanded nav a {
+        display: block;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    header.mobile-navigation-is-expanded nav a:hover {
+        background-color: white;
+        color: black;
+    }
+
+    header.mobile-navigation-is-expanded nav a.donate {
+        border: none;
+        border-radius: 0;
+    }
+
+    header.mobile-navigation-is-expanded nav a.facebook,
+    header.mobile-navigation-is-expanded nav a.twitter {
+        display: none;
+    }
 }

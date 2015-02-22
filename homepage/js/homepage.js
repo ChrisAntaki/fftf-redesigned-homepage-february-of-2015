@@ -1,3 +1,4 @@
+// Form
 (function(){
     var form = document.getElementById('id_form');
     var action = form.getAttribute('action');
@@ -32,6 +33,25 @@
     }
 })();
 
+
+
+// Mobile navigation
+(function(){
+    var header = document.querySelector('header');
+    var cheeseburger = document.querySelector('.cheeseburger');
+    var lines = document.querySelector('.cheeseburger .lines');
+    var mobileNavigationIsExpanded = false;
+
+    cheeseburger.addEventListener('click', function(e) {
+        if (mobileNavigationIsExpanded) {
+            header.className = header.className.replace(' mobile-navigation-is-expanded ', '');
+        } else {
+            header.className += ' mobile-navigation-is-expanded ';
+        }
+
+        mobileNavigationIsExpanded = !mobileNavigationIsExpanded;
+    }, false);
+})();
 
 
 
