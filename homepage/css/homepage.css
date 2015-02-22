@@ -1,3 +1,30 @@
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+       opacity: 1;
+    }
+}
+
+.fadeIn {
+    -webkit-animation-duration: 2s;
+    -webkit-animation-name: fadeIn;
+    animation-duration: 2s;
+    animation-name: fadeIn;
+}
+
 header .mobile-navigation .cheeseburger {
     cursor: pointer;
     position: relative;
