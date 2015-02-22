@@ -300,10 +300,8 @@
 
     if (navigator.userAgent.match(/MSIE [5-9]/)) {
         loadJS('homepage/js/outdated.js' + buster);
-    } else if (document.readyState === "complete") {
-        loadAdditionalResources();
     } else {
-        window.addEventListener('load', loadAdditionalResources);
+        setTimeout(loadAdditionalResources, 16);
     }
 
     function loadAdditionalResources() {
