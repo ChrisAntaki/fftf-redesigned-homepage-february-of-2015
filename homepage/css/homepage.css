@@ -158,10 +158,6 @@ section.additional-sections .projects h4 {
     margin: 12px 0 32px;
 }
 
-section.additional-sections .projects h4 a {
-    color: #14a767;
-}
-
 section.additional-sections .projects .project {
     background-color: #1b1b1c;
     display: inline-block;
@@ -193,8 +189,17 @@ section.additional-sections .projects .project p {
 }
 
 section.additional-sections .projects .project span a {
-    color: #14a767;
     display: block;
     font-weight: 400;
     line-height: 1.3;
+}
+
+section.additional-sections .projects h4 a,
+section.additional-sections .projects .project span a {
+    color: #14a767;
+}
+
+section.additional-sections .projects h4 a:hover,
+section.additional-sections .projects .project span a:hover {
+    color: #1cbe78;
 }
