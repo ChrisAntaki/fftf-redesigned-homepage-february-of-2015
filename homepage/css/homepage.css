@@ -143,7 +143,6 @@ section.additional-sections {
     font-weight: lighter;
     margin: 0 auto;
     max-width: 100%;
-    overflow: hidden;
     padding: 24px 16px;
     width: 980px;
 
@@ -177,17 +176,24 @@ section.additional-sections .projects .project {
     border-radius: 4px;
     box-shadow: 0 1px 0 rgba(33, 49, 62, 1);
     display: inline-block;
-    /*height: 268px;*/
     height: 284px;
-    text-align: center;
-    width: 226px;
-    vertical-align: bottom;
-    overflow: hidden;
     margin: 5px;
+    text-align: center;
+    vertical-align: bottom;
+    width: 226px;
+
+    -webkit-transition: -webkit-transform 0.3s;
+            transition: transform 0.3s;
 }
 
 section.additional-sections .projects .project:hover:not(.other-links) {
     background-color: #2f404e;
+    position: relative;
+    z-index: 1;
+
+    -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+            transform: scale(1.05);
 }
 
 section.additional-sections .projects .project img {
