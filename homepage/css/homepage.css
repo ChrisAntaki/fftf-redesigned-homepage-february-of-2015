@@ -130,6 +130,11 @@ header.mobile-navigation-is-expanded .mobile-navigation .cheeseburger .lines::af
     header.mobile-navigation-is-expanded nav a.twitter {
         display: none;
     }
+
+    iframe#_cd_iframe {
+        left: -767px;
+        position: absolute;
+    }
 }
 
 section.additional-sections {
