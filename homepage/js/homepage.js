@@ -59,10 +59,31 @@
 (function(){
     var container = document.querySelector('.additional-sections');
 
-    // new AdditionalSection('Feeds');
-    new AdditionalSection('Projects');
-    new AdditionalSection('Press');
-    new Footer();
+    new AdditionalSection('Projects', function(el) {
+        // Make entire projects clickable
+        el.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            var target = e.target;
+
+            if (target.tagName === 'A') {
+                return;
+            }
+
+            while (target.parentNode) {
+                if (target.className === 'project') {
+                    console.log('Found!');
+                    target.querySelector('a').dispatchEvent(new Event('click'));
+                    break;
+                }
+
+                target = target.parentNode;
+            }
+        }, true);
+
+        new AdditionalSection('Press');
+        new Footer();
+    });
 })();
 
 
@@ -88,7 +109,7 @@
 
 
 
-function AdditionalSection(name) {
+function AdditionalSection(name, callback) {
     var container = document.querySelector('.additional-sections');
     var element = document.createElement('div');
     container.appendChild(element);
@@ -98,6 +119,10 @@ function AdditionalSection(name) {
         success: function(e) {
             element.className = ' fadeIn ';
             element.innerHTML = e.target.responseText;
+
+            if (callback) {
+                callback(element);
+            }
         }
     });
 

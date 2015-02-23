@@ -186,6 +186,10 @@ section.additional-sections .projects .project {
             transition: background-color 0.4s, transform 0.4s;
 }
 
+section.additional-sections .projects .project:not(.other-links) {
+    cursor: pointer;
+}
+
 section.additional-sections .projects .project:hover:not(.other-links) {
     background-color: #2f404e;
     position: relative;
@@ -196,17 +200,25 @@ section.additional-sections .projects .project:hover:not(.other-links) {
             transform: scale(1.05);
 }
 
-section.additional-sections .projects .project img {
+section.additional-sections .projects .project:not(.other-links) a {
+    border-radius: 4px;
+    display: block;
+    height: 123px;
+    margin: 10px auto 0px;
+    overflow: hidden;
+    width: 202px;
+}
+
+section.additional-sections .projects .project:not(.other-links) a img {
     border: none;
-    height: 129px;
-    margin: 10px 0 0;
+    margin: -2px 0 0 -4px;
     opacity: 0;
 
     -webkit-transition: opacity 0.3s;
             transition: opacity 0.3s;
 }
 
-section.additional-sections .projects .project.other-links img {
+section.additional-sections .projects .project.other-links a img {
     height: 66px;
 }
 
