@@ -177,6 +177,7 @@ section.additional-sections .projects .project {
 
 section.additional-sections .projects .project img {
     border: none;
+    height: 129px;
     margin: 10px 0 0;
 }
 
