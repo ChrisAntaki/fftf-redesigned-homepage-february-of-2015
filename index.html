@@ -82,7 +82,7 @@
 
     header .logo-large {
         display: block;
-        margin: 52px auto 24px;
+        margin: 52px auto 22px;
         max-width: 90%;
     }
 
@@ -179,13 +179,18 @@
         float: left;
         font-family: "Helvetica";
         font-size: 16px;
-        line-height: 48px;
+        height: 48px;
         margin: 0 0 12px;
-        padding: 0 10px;
-        width: 105px;
+        outline: none;
+        padding: 3px 10px 0;
+        width: 106px;
 
         -webkit-transition: background-color 0.3s;
                 transition: background-color 0.3s;
+
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
     }
 
     section.below-the-fold form button:hover {
