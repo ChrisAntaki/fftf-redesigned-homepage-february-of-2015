@@ -182,8 +182,8 @@ section.additional-sections .projects .project {
     vertical-align: bottom;
     width: 226px;
 
-    -webkit-transition: -webkit-transform 0.3s;
-            transition: transform 0.3s;
+    -webkit-transition: background-color 0.4s, -webkit-transform 0.4s;
+            transition: background-color 0.4s, transform 0.4s;
 }
 
 section.additional-sections .projects .project:hover:not(.other-links) {
@@ -217,7 +217,7 @@ section.additional-sections .projects .project h5 {
 }
 
 section.additional-sections .projects .project p {
-    color: white;
+    color: #e4edf5;
     font-size: 13px;
     font-weight: normal;
     line-height: 17px;
