@@ -61,7 +61,8 @@
 
     new AdditionalSection('Feeds');
     new AdditionalSection('Projects');
-    new AdditionalSection('Footer');
+    new AdditionalSection('Press');
+    new Footer();
 })();
 
 
@@ -99,6 +100,26 @@ function AdditionalSection(name) {
             element.innerHTML = e.target.responseText;
         }
     });
+
+    return element;
+}
+
+
+
+function Footer() {
+    var container = document.querySelector('.footer');
+    var element = document.createElement('div');
+    container.appendChild(element);
+
+    new AJAX({
+        url: 'homepage/sections/Footer.html',
+        success: function(e) {
+            element.className = ' fadeIn ';
+            element.innerHTML = e.target.responseText;
+        }
+    });
+
+    return element;
 }
 
 

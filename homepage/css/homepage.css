@@ -141,7 +141,7 @@ section.additional-sections {
     color: white;
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
-    margin: 0 auto 100px;
+    margin: 0 auto;
     max-width: 100%;
     overflow: hidden;
     padding: 50px 16px 24px;
@@ -154,6 +154,10 @@ section.additional-sections {
 
 section.additional-sections .projects {
     text-align: center;
+}
+
+section.additional-sections .projects.first {
+    padding: 48px 0 0;
 }
 
 section.additional-sections .projects h4 {
@@ -179,6 +183,10 @@ section.additional-sections .projects .project img {
     border: none;
     height: 129px;
     margin: 10px 0 0;
+}
+
+section.additional-sections .projects .project.other-links img {
+    height: 66px;
 }
 
 section.additional-sections .projects .project h5 {
@@ -235,10 +243,6 @@ section.additional-sections .call-to-activism a {
 }
 
 @media screen and (max-width: 767px) {
-    section.additional-sections {
-        margin-bottom: 0;
-    }
-
     section.additional-sections .call-to-activism br {
         display: block;
     }
@@ -300,4 +304,64 @@ section.additional-sections .publications a {
     display: inline-block;
     padding: 8px;
     vertical-align: middle;
+}
+
+section.footer {
+    background-image: url(../images/stripes.png);
+    font-family: 'Raleway', sans-serif;
+    padding: 0 0 140px;
+}
+
+section.footer .logo-bar {
+    background-color: #3b3b3b;
+    border-bottom: 1px solid #4e4e4e;
+    border-top: 1px solid #4e4e4e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    height: 68px;
+    margin: 16px 0 0;
+    text-align: center;
+}
+
+section.footer .logo-bar img {
+    height: 40px;
+    padding: 14px 0 10px;
+}
+
+section.footer nav {
+    padding: 64px 0 8px;
+    text-align: center;
+    line-height: 2;
+}
+
+section.footer nav a {
+    color: white;
+    font-weight: bold;
+    padding: 0 12px;
+    text-decoration: none;
+}
+
+section.footer .conclusion {
+    color: #a8a8a9;
+    line-height: 1.5;
+    padding: 0 20px;
+    text-align: center;
+}
+
+section.footer .conclusion a {
+    color: #a8a8a9;
+    font-weight: bold;
+}
+
+section.footer .conclusion .donations {
+    color: white;
+}
+
+section.footer .conclusion .donations a {
+    color: #14a767;
+}
+
+@media screen and (max-width: 767px) {
+    section.footer {
+        padding: 0 0 32px;
+    }
 }
