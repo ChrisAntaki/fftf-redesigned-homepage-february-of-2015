@@ -72,8 +72,8 @@
 
             while (target.parentNode) {
                 if (target.className === 'project') {
-                    console.log('Found!');
-                    target.querySelector('a').dispatchEvent(new Event('click'));
+                    var link = target.querySelector('a');
+                    window.open(link.href, '_blank');
                     break;
                 }
 
