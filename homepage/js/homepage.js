@@ -59,7 +59,7 @@
 (function(){
     var container = document.querySelector('.additional-sections');
 
-    new AdditionalSection('Feeds');
+    // new AdditionalSection('Feeds');
     new AdditionalSection('Projects');
     new AdditionalSection('Press');
     new Footer();
