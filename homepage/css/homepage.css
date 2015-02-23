@@ -273,39 +273,6 @@ section.additional-sections .projects .project .fire {
             transition: opacity 0.3s;
 }
 
-section.additional-sections .call-to-activism {
-    margin: 48px 0 0;
-    text-align: center;
-}
-
-section.additional-sections .call-to-activism br {
-    display: none;
-}
-
-section.additional-sections .call-to-activism a {
-    background-color: #1b1b1c;
-    background-image: linear-gradient(#262627 0%, #1b1b1c 100%);
-    border-radius: 3px;
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    color: white;
-    display: inline-block;
-    font-weight: bold;
-    line-height: 36px;
-    margin: 0 12px 0 6px;
-    padding: 0 16px;
-    text-decoration: none;
-}
-
-@media screen and (max-width: 767px) {
-    section.additional-sections .call-to-activism br {
-        display: block;
-    }
-
-    section.additional-sections .call-to-activism a {
-        margin: 0 0 12px;
-    }
-}
-
 section.additional-sections .quotes {
     margin: 48px 0 0;
     text-align: center;
