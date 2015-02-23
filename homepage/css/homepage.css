@@ -212,6 +212,11 @@ section.additional-sections .projects .project span a:hover {
 
 section.additional-sections .call-to-activism {
     margin: 48px 0 0;
+    text-align: center;
+}
+
+section.additional-sections .call-to-activism br {
+    display: none;
 }
 
 section.additional-sections .call-to-activism a {
@@ -226,4 +231,68 @@ section.additional-sections .call-to-activism a {
     margin: 0 12px 0 6px;
     padding: 0 16px;
     text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+    section.additional-sections .call-to-activism br {
+        display: block;
+    }
+
+    section.additional-sections .call-to-activism a {
+        margin: 0 0 12px;
+    }
+}
+
+section.additional-sections .quotes {
+    margin: 48px 0 0;
+    text-align: center;
+}
+
+section.additional-sections .quotes h4 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    margin: 12px 0 32px;
+}
+
+section.additional-sections .quotes .publication {
+    display: inline-block;
+    text-align: left;
+    padding: 0 16px 32px;
+    vertical-align: top;
+    width: 280px;
+}
+
+section.additional-sections .quotes .publication .quote {
+    padding: 0 0 16px;
+}
+
+section.additional-sections .quotes .publication .quote::before,
+section.additional-sections .quotes .publication .quote::after {
+    color: #777;
+    content: '"';
+    font-family: Verdana, sans-serif;
+}
+
+section.additional-sections .quotes .publication .name {
+    color: #7e7e7e;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+section.additional-sections .quotes .publication .name img {
+    margin: 0 6px 0 0;
+    vertical-align: middle;
+}
+
+section.additional-sections .publications {
+    text-align: center;
+    border-top: 1px solid #334;
+    padding: 36px 0 24px;
+}
+
+section.additional-sections .publications a {
+    display: inline-block;
+    padding: 0 8px;
+    vertical-align: top;
 }
