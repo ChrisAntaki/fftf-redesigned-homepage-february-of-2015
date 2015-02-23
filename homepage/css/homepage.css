@@ -293,6 +293,6 @@ section.additional-sections .publications {
 
 section.additional-sections .publications a {
     display: inline-block;
-    padding: 0 8px;
-    vertical-align: top;
+    padding: 8px;
+    vertical-align: middle;
 }
