@@ -219,8 +219,10 @@ section.additional-sections .projects .project:not(.other-links) a img {
             transition: opacity 0.3s;
 }
 
-section.additional-sections .projects .project.other-links a img {
-    height: 66px;
+section.additional-sections .projects .project.other-links img {
+    border-radius: 5px;
+    height: 48px;
+    margin: 10px 0 16px;
 }
 
 section.additional-sections .projects .project h5 {
