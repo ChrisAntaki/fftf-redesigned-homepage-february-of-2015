@@ -165,7 +165,7 @@ section.additional-sections .projects h4 {
     font-family: 'Raleway', sans-serif;
     font-size: 23px;
     font-weight: lighter;
-    margin: 12px 15px 40px;
+    margin: 12px 0 40px 16px;
     text-align: left;
     text-shadow: 2px 2px 3px rgba(0,0,0,.75);
 }
@@ -277,7 +277,7 @@ section.additional-sections .projects .project .fire {
             transition: opacity 0.3s;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 996px) {
     section.additional-sections .projects {
         width: 708px;
     }
@@ -290,7 +290,6 @@ section.additional-sections .projects .project .fire {
 
     section.additional-sections .projects h4 {
         margin-left: 0;
-        margin-right: 0;
         text-align: center;
     }
 }
@@ -304,7 +303,7 @@ section.additional-sections .quotes h4 {
     font-family: 'Raleway', sans-serif;
     font-size: 28px;
     font-weight: normal;
-    margin: 12px 0 32px;
+    margin: 12px 0 32px 16px;
     text-align: left;
 }
 
@@ -342,6 +341,21 @@ section.additional-sections .quotes .publication .name img {
 
     -webkit-transition: opacity 0.3s;
             transition: opacity 0.3s;
+}
+
+@media screen and (max-width: 996px) {
+    section.additional-sections .quotes h4 {
+        text-align: center;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 362px) {
+    section.additional-sections .quotes .publication {
+        padding-left: 0;
+        padding-right: 0;
+        width: 250px;
+    }
 }
 
 section.additional-sections .publications {
