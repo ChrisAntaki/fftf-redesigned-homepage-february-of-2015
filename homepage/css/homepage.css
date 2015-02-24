@@ -153,6 +153,7 @@ section.additional-sections {
 }
 
 section.additional-sections .projects {
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -164,7 +165,7 @@ section.additional-sections .projects h4 {
     font-family: 'Raleway', sans-serif;
     font-size: 23px;
     font-weight: lighter;
-    margin: 12px 0 40px;
+    margin: 12px 15px 40px;
     text-align: left;
     text-shadow: 2px 2px 3px rgba(0,0,0,.75);
 }
@@ -195,7 +196,7 @@ section.additional-sections .projects .project:not(.other-links) {
 section.additional-sections .projects .project:hover:not(.other-links) {
     background-color: #2f404e;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 
     -webkit-transform: scale(1.05);
         -ms-transform: scale(1.05);
@@ -265,8 +266,8 @@ section.additional-sections .projects .project span a:hover {
 section.additional-sections .projects .project .fire {
     display: block;
     height: 48px;
-    margin-left: 185px;
-    margin-top: -12px;
+    margin-left: 190px;
+    margin-top: -18px;
     opacity: 0;
     position: absolute;
     width: 48px;
@@ -274,6 +275,24 @@ section.additional-sections .projects .project .fire {
 
     -webkit-transition: opacity 0.3s;
             transition: opacity 0.3s;
+}
+
+@media screen and (max-width: 992px) {
+    section.additional-sections .projects {
+        width: 708px;
+    }
+}
+
+@media screen and (max-width: 748px) {
+    section.additional-sections .projects {
+        width: auto;
+    }
+
+    section.additional-sections .projects h4 {
+        margin-left: 0;
+        margin-right: 0;
+        text-align: center;
+    }
 }
 
 section.additional-sections .quotes {
