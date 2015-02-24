@@ -312,7 +312,13 @@ section.additional-sections .quotes .publication .name {
 
 section.additional-sections .quotes .publication .name img {
     margin: 0 6px 0 0;
+    min-height: 33px;
+    min-width: 25px;
+    opacity: 0;
     vertical-align: middle;
+
+    -webkit-transition: opacity 0.3s;
+            transition: opacity 0.3s;
 }
 
 section.additional-sections .publications {
@@ -329,6 +335,12 @@ section.additional-sections .publications a {
 
 section.additional-sections .publications a img {
     border: none;
+    min-height: 21px;
+    min-width: 67px;
+    opacity: 0;
+
+    -webkit-transition: opacity 0.3s;
+            transition: opacity 0.3s;
 }
 
 section.footer {
