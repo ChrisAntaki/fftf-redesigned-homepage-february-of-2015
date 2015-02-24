@@ -80,6 +80,15 @@
         margin-left: 4px;
     }
 
+    header .logo-large,
+    header .logo-small {
+        opacity: 0;
+
+        -webkit-transition: opacity 0.3s;
+                transition: opacity 0.3s;
+    }
+
+
     header .logo-large {
         display: block;
         margin: 52px auto 22px;
@@ -112,9 +121,13 @@
         height: 50px;
     }
 
-    header .mobile-navigation img {
+    header .mobile-navigation .heart {
         height: 32px;
         margin: 9px 0 0 12px;
+        opacity: 0;
+
+        -webkit-transition: opacity 0.3s;
+                transition: opacity 0.3s;
     }
 
     header .mobile-navigation .cheeseburger {
@@ -293,7 +306,7 @@
         <div class="david-by-michelangelo"></div>
 
         <div class="mobile-navigation">
-            <img class="heart" src="homepage/images/heart.png">
+            <img class="heart" src="homepage/images/heart.png" onload="this.style.opacity = 1;">
             <div class="cheeseburger">
                 <div class="lines fadeIn"></div>
             </div>
@@ -311,8 +324,8 @@
             <a href="https://twitter.com/fightfortheftr" class="twitter" target="_blank"></a>
         </nav>
 
-        <img src="homepage/images/fight-for-the-future-943px.png" class="logo-large">
-        <img src="homepage/images/fight-for-the-future-320px.png" class="logo-small">
+        <img src="homepage/images/fight-for-the-future-943px.png" class="logo-large" onload="this.style.opacity = 1;">
+        <img src="homepage/images/fight-for-the-future-320px.png" class="logo-small" onload="this.style.opacity = 1;">
 
         <div class="motto">A nonprofit working to expand the internet's power for good</div>
     </header>
