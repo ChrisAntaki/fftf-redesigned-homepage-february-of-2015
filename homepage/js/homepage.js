@@ -12,12 +12,17 @@
 
 // Form
 (function(){
-    var form = document.getElementById('id_form');
+    var form = document.getElementById('form-signup');
     var action = form.getAttribute('action');
     var method = form.getAttribute('method');
 
-    var emailInput = document.getElementById('id_email');
+    var emailInput = document.getElementById('input-email');
     var emailRegex = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
+
+    var uaInput = document.getElementById('input-ua');
+    uaInput.value = navigator.userAgent;
+
+    var button = form.querySelector('button');
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -26,6 +31,8 @@
         if (!email || !email.match(emailRegex)) {
             return alert('Please enter an email address.');
         }
+
+        button.setAttribute('disabled', 'disabled');
 
         new AJAX({
             error: onFormSubmitError,
@@ -71,6 +78,20 @@
 (function(){
     var container = document.querySelector('.additional-sections');
 
+    new AdditionalSection('Feeds', function(el) {
+        var twitterWrapper = document.querySelector('.twitter-timeline-wrapper');
+        var script = document.createElement('script');
+        script.id = 'twitter-wjs';
+        script.src = '//platform.twitter.com/widgets.js';
+        script.onload = function() {
+            twitterWrapper.style.opacity = 1;
+        };
+        script.onerror = function() {
+            twitterWrapper.remove();
+        };
+        document.body.appendChild(script);
+    });
+
     new AdditionalSection('Projects', function(el) {
         // Make entire projects clickable
         el.addEventListener('click', function(e) {
@@ -111,8 +132,12 @@ function AdditionalSection(name, callback) {
     var element = document.createElement('div');
     container.appendChild(element);
 
+    var url = 'homepage/sections/' + name + '.html';
+
+    url += '?buster=' + Date.now();
+
     new AJAX({
-        url: 'homepage/sections/' + name + '.html',
+        url: url,
         success: function(e) {
             element.className = ' fadeIn ';
             element.innerHTML = e.target.responseText;
