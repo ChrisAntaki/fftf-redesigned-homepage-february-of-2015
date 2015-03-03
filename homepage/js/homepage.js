@@ -1,3 +1,15 @@
+// Preloading & fading in David background
+(function(){
+    var url = 'homepage/images/david-by-michelangelo.jpg';
+    var image = new Image();
+    image.src = url;
+    image.onload = function() {
+        document.querySelector('.david-by-michelangelo').className += ' loaded ';
+    }
+})();
+
+
+
 // Form
 (function(){
     var form = document.getElementById('id_form');
