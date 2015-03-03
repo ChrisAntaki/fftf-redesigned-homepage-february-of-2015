@@ -144,15 +144,6 @@ header .david-by-michelangelo.loaded {
     opacity: 1;
 }
 
-@media screen and (min-width: 768px) {
-    header .david-by-michelangelo.loaded {
-        background-position: 0 -7px;
-
-        -webkit-transition: background-position 0.6s, opacity 0.6s;
-                transition: background-position 0.6s, opacity 0.6s;
-    }
-}
-
 section.additional-sections {
     color: white;
     font-family: 'Raleway', sans-serif;
