@@ -1,194 +1,30 @@
-// Preloading & fading in David background
-(function(){
-    var url = 'homepage/images/david-by-michelangelo.jpg';
-    var image = new Image();
-    image.src = url;
-    image.onload = function() {
-        document.querySelector('.david-by-michelangelo').className += ' loaded ';
-    }
-})();
-
-
-
-// Form
-(function(){
-    var form = document.getElementById('form-signup');
-    var action = form.getAttribute('action');
-    var method = form.getAttribute('method');
-
-    var emailInput = document.getElementById('input-email');
-    var emailRegex = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
-
-    var uaInput = document.getElementById('input-ua');
-    uaInput.value = navigator.userAgent;
-
-    var button = form.querySelector('button');
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        var email = emailInput.value;
-        if (!email || !email.match(emailRegex)) {
-            return alert('Please enter an email address.');
-        }
-
-        button.setAttribute('disabled', 'disabled');
-
-        new AJAX({
-            error: onFormSubmitError,
-            form: form,
-            method: method,
-            success: onFormSubmitSuccess,
-            url: action,
-        });
-    }, false);
-
-    function onFormSubmitSuccess(e) {
-        location.href = 'https://www.fightforthefuture.org/confirm/';
-    }
-
-    function onFormSubmitError(e) {
-        alert('Sorry, we are experiencing technical issues. Please try again in five minutes.');
-    }
-})();
-
-
-
-// Mobile navigation
-(function(){
-    var header = document.querySelector('header');
-    var cheeseburger = document.querySelector('.cheeseburger');
-    var lines = document.querySelector('.cheeseburger .lines');
-    var mobileNavigationIsExpanded = false;
-
-    cheeseburger.addEventListener('click', function(e) {
-        if (mobileNavigationIsExpanded) {
-            header.className = header.className.replace(' mobile-navigation-is-expanded ', '');
-        } else {
-            header.className += ' mobile-navigation-is-expanded ';
-        }
-
-        mobileNavigationIsExpanded = !mobileNavigationIsExpanded;
-    }, false);
-})();
-
-
-
-// Additional Sections
-(function(){
-    var container = document.querySelector('.additional-sections');
-
-    new AdditionalSection('Feeds', function(el) {
-        /////////////
-        // Twitter //
-        /////////////
-        var twitterWrapper = document.querySelector('.twitter-timeline-wrapper');
-        var script = document.createElement('script');
-        script.id = 'twitter-wjs';
-        script.src = 'https://platform.twitter.com/widgets.js';
-
-        script.onload = function() {
-            setTimeout(function() {
-                twitterWrapper.style.opacity = 1;
-            }, 1000); // This iframe takes a while to load...
-        };
-
-        script.onerror = function() {
-            document.body.className += " adblock ";
-            twitterWrapper.remove();
-        };
-
-        document.body.appendChild(script);
-
-        ////////////
-        // Tumblr //
-        ////////////
-        loadJS('https://fftf-cache.herokuapp.com/tumblr');
-
-        // Create templates.
-        var templates = {};
-        var types = ['link', 'photo', 'regular', 'quote', 'video'];
-        var type;
-        for (var i = 0; i < types.length; i++) {
-            type = types[i];
-            var html = document.getElementById('template-tumblr-' + type).innerHTML;
-            templates[type] = html;
-        }
-
-        window.tumblrUpdateCallback = function(res) {
-            // Create container
-            var container = document.createElement('div');
-            container.className = 'posts';
-
-            // Create elements
-            var post;
-            for (var i = 0, length = Math.min(res.posts.length, 50); i < length; i++) {
-                post = res.posts[i]
-
-                // Skip unsupported types.
-                if (!templates[post.type]) {
-                    return;
-                }
-
-                // Prettify dates
-                post.date = post.date.match(/.*\d{4}/)[0];
-
-                // Insert variables
-                var html = templates[post.type];
-                var regex, value;
-                for (var key in post) {
-                    value = post[key];
-                    regex = new RegExp('{{' + key + '}}', 'g');
-                    html = html.replace(regex, value);
-                }
-
-                // HTTP -> HTTPS
-                html = html.replace(/src\s*=\s*"http:/gi, 'src="\/\/');
-
-                // Append
-                var element = document.createElement('div');
-                element.innerHTML = html;
-                container.appendChild(element);
-            }
-
-            var tumblrWrapper = document.querySelector('.tumblr-wrapper');
-            tumblrWrapper.appendChild(container);
-            tumblrWrapper.className += " filled ";
-        };
-    });
-
-    new AdditionalSection('Projects', function(el) {
-        // Make entire projects clickable
-        el.addEventListener('click', function(e) {
-            e.preventDefault();
-
-            var target = e.target;
-
-            if (target.tagName === 'A') {
-                return;
-            }
-
-            while (target.parentNode) {
-                if (target.className === 'project') {
-                    var link = target.querySelector('a');
-                    window.open(link.href, '_blank');
-                    break;
-                }
-
-                target = target.parentNode;
-            }
-        }, true);
-
-        new AdditionalSection('Press');
-        new Footer();
-    });
-})();
-
-
-
 /*
  * Modules
  */
+
+
+
+function AdditionalSectionQueue() {
+    this.queue = [];
+}
+
+AdditionalSectionQueue.prototype.push = function(name, callback) {
+    this.queue.push([name, callback]);
+};
+
+AdditionalSectionQueue.prototype.next = function() {
+    if (this.queue.length === 0) {
+        return;
+    }
+
+    var item = this.queue.shift();
+    var name = item[0];
+    var callback = item[1];
+
+    new AdditionalSection(name, callback || function() {
+        this.next();
+    }.bind(this));
+};
 
 
 
@@ -344,3 +180,206 @@ AJAX.prototype.serializeForm = function(form) {
 
     return q.join("&");
 };
+
+
+
+/*
+ * Sections
+ */
+
+
+
+// Preloading & fading in David background
+(function(){
+    var url = 'homepage/images/david-by-michelangelo.jpg';
+    var image = new Image();
+    image.src = url;
+    image.onload = function() {
+        document.querySelector('.david-by-michelangelo').className += ' loaded ';
+    }
+})();
+
+
+
+// Form
+(function(){
+    var form = document.getElementById('form-signup');
+    var action = form.getAttribute('action');
+    var method = form.getAttribute('method');
+
+    var emailInput = document.getElementById('input-email');
+    var emailRegex = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
+
+    var uaInput = document.getElementById('input-ua');
+    uaInput.value = navigator.userAgent;
+
+    var button = form.querySelector('button');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var email = emailInput.value;
+        if (!email || !email.match(emailRegex)) {
+            return alert('Please enter an email address.');
+        }
+
+        button.setAttribute('disabled', 'disabled');
+
+        new AJAX({
+            error: onFormSubmitError,
+            form: form,
+            method: method,
+            success: onFormSubmitSuccess,
+            url: action,
+        });
+    }, false);
+
+    function onFormSubmitSuccess(e) {
+        location.href = 'https://www.fightforthefuture.org/confirm/';
+    }
+
+    function onFormSubmitError(e) {
+        alert('Sorry, we are experiencing technical issues. Please try again in five minutes.');
+    }
+})();
+
+
+
+// Mobile navigation
+(function(){
+    var header = document.querySelector('header');
+    var cheeseburger = document.querySelector('.cheeseburger');
+    var lines = document.querySelector('.cheeseburger .lines');
+    var mobileNavigationIsExpanded = false;
+
+    cheeseburger.addEventListener('click', function(e) {
+        if (mobileNavigationIsExpanded) {
+            header.className = header.className.replace(' mobile-navigation-is-expanded ', '');
+        } else {
+            header.className += ' mobile-navigation-is-expanded ';
+        }
+
+        mobileNavigationIsExpanded = !mobileNavigationIsExpanded;
+    }, false);
+})();
+
+
+
+// Additional Sections
+(function(){
+    var container = document.querySelector('.additional-sections');
+
+    var queue = new AdditionalSectionQueue();
+
+    queue.push('Feeds', function(el) {
+        /////////////
+        // Twitter //
+        /////////////
+        var twitterWrapper = document.querySelector('.twitter-timeline-wrapper');
+        var script = document.createElement('script');
+        script.id = 'twitter-wjs';
+        script.src = 'https://platform.twitter.com/widgets.js';
+
+        script.onload = function() {
+            setTimeout(function() {
+                twitterWrapper.style.opacity = 1;
+            }, 1500); // This iframe takes a while to load...
+        };
+
+        script.onerror = function() {
+            document.body.className += " adblock ";
+            twitterWrapper.remove();
+        };
+
+        document.body.appendChild(script);
+
+        ////////////
+        // Tumblr //
+        ////////////
+        loadJS('https://fftf-cache.herokuapp.com/tumblr');
+
+        // Create templates.
+        var templates = {};
+        var types = ['link', 'photo', 'regular', 'quote', 'video'];
+        var type;
+        for (var i = 0; i < types.length; i++) {
+            type = types[i];
+            var html = document.getElementById('template-tumblr-' + type).innerHTML;
+            templates[type] = html;
+        }
+
+        window.tumblrUpdateCallback = function(res) {
+            // Create container
+            var container = document.createElement('div');
+            container.className = 'posts';
+
+            // Create elements
+            var post;
+            for (var i = 0, length = Math.min(res.posts.length, 50); i < length; i++) {
+                post = res.posts[i]
+
+                // Skip unsupported types.
+                if (!templates[post.type]) {
+                    return;
+                }
+
+                // Prettify dates
+                post.date = post.date.match(/.*\d{4}/)[0];
+
+                // Insert variables
+                var html = templates[post.type];
+                var regex, value;
+                for (var key in post) {
+                    value = post[key];
+                    regex = new RegExp('{{' + key + '}}', 'g');
+                    html = html.replace(regex, value);
+                }
+
+                // HTTP -> HTTPS
+                html = html.replace(/src\s*=\s*"http:/gi, 'src="\/\/');
+
+                // Append
+                var element = document.createElement('div');
+                element.innerHTML = html;
+                container.appendChild(element);
+            }
+
+            var tumblrWrapper = document.querySelector('.tumblr-wrapper');
+            tumblrWrapper.appendChild(container);
+            tumblrWrapper.className += " filled ";
+
+            queue.next();
+        };
+    });
+
+    queue.push('Projects', function(el) {
+        // Make entire projects clickable
+        el.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            var target = e.target;
+
+            if (target.tagName === 'A') {
+                return;
+            }
+
+            while (target.parentNode) {
+                if (target.className === 'project') {
+                    var link = target.querySelector('a');
+                    window.open(link.href, '_blank');
+                    break;
+                }
+
+                target = target.parentNode;
+            }
+        }, true);
+
+        queue.next();
+    });
+
+    queue.push('Press');
+
+    new Footer();
+
+    queue.next();
+})();
