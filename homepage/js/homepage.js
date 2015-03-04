@@ -79,17 +79,78 @@
     var container = document.querySelector('.additional-sections');
 
     new AdditionalSection('Feeds', function(el) {
+        /////////////
+        // Twitter //
+        /////////////
         var twitterWrapper = document.querySelector('.twitter-timeline-wrapper');
         var script = document.createElement('script');
         script.id = 'twitter-wjs';
-        script.src = '//platform.twitter.com/widgets.js';
+        script.src = 'https://platform.twitter.com/widgets.js';
+
         script.onload = function() {
             twitterWrapper.style.opacity = 1;
         };
+
         script.onerror = function() {
             twitterWrapper.remove();
         };
+
         document.body.appendChild(script);
+
+        ////////////
+        // Tumblr //
+        ////////////
+        loadJS('https://fftf-cache.herokuapp.com/tumblr');
+
+        // Create templates.
+        var templates = {};
+        var types = ['link', 'photo', 'regular', 'quote', 'video'];
+        var type;
+        for (var i = 0; i < types.length; i++) {
+            type = types[i];
+            var html = document.getElementById('template-tumblr-' + type).innerHTML;
+            templates[type] = html;
+        }
+
+        window.tumblrUpdateCallback = function(res) {
+            // Create container
+            var container = document.createElement('div');
+            container.className = 'posts';
+
+            // Create elements
+            var post;
+            for (var i = 0, length = Math.min(res.posts.length, 50); i < length; i++) {
+                post = res.posts[i]
+
+                // Skip unsupported types.
+                if (!templates[post.type]) {
+                    return;
+                }
+
+                // Prettify dates
+                post.date = post.date.match(/.*\d{4}/)[0];
+
+                // Insert variables
+                var html = templates[post.type];
+                var regex, value;
+                for (var key in post) {
+                    value = post[key];
+                    regex = new RegExp('{{' + key + '}}', 'g');
+                    html = html.replace(regex, value);
+                }
+
+                // HTTP -> HTTPS
+                html = html.replace(/src\s*=\s*"http:/gi, 'src="\/\/');
+
+                // Append
+                var element = document.createElement('div');
+                element.innerHTML = html;
+                container.appendChild(element);
+            }
+
+            var tumblrWrapper = document.querySelector('.tumblr-wrapper');
+            tumblrWrapper.appendChild(container);
+        };
     });
 
     new AdditionalSection('Projects', function(el) {
