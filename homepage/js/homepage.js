@@ -88,10 +88,13 @@
         script.src = 'https://platform.twitter.com/widgets.js';
 
         script.onload = function() {
-            twitterWrapper.style.opacity = 1;
+            setTimeout(function() {
+                twitterWrapper.style.opacity = 1;
+            }, 1000); // This iframe takes a while to load...
         };
 
         script.onerror = function() {
+            document.body.className += " adblock ";
             twitterWrapper.remove();
         };
 
@@ -150,6 +153,7 @@
 
             var tumblrWrapper = document.querySelector('.tumblr-wrapper');
             tumblrWrapper.appendChild(container);
+            tumblrWrapper.className += " filled ";
         };
     });
 

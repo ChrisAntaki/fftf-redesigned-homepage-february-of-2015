@@ -185,27 +185,24 @@ section.additional-sections .twitter-timeline-wrapper .spacer {
     height: 12px;
 }
 
-@media screen and (max-width: 360px) {
-    section.additional-sections .twitter-timeline-wrapper .logo {
-        left: 0;
-        right: auto;
-        top: 0;
-    }
-
-    section.additional-sections .twitter-timeline-wrapper .spacer {
-        height: 64px;
-    }
-}
-
 section.additional-sections .twitter-timeline-wrapper iframe {
     height: 365px;
+    width: 100% !important;
 }
 
 section.additional-sections .tumblr-wrapper {
     float: right;
     max-height: 375px;
+    opacity: 0;
     position: relative;
     width: calc(100% - 360px);
+
+    -webkit-transition: opacity 0.3s;
+            transition: opacity 0.3s;
+}
+
+section.additional-sections .tumblr-wrapper.filled {
+    opacity: 1;
 }
 
 section.additional-sections .tumblr-wrapper .logo {
@@ -216,18 +213,6 @@ section.additional-sections .tumblr-wrapper .logo {
 
 section.additional-sections .tumblr-wrapper .spacer {
     height: 12px;
-}
-
-@media screen and (max-width: 360px) {
-    section.additional-sections .tumblr-wrapper .logo {
-        left: 0;
-        right: auto;
-        top: 0;
-    }
-
-    section.additional-sections .tumblr-wrapper .spacer {
-        height: 64px;
-    }
 }
 
 section.additional-sections .tumblr-wrapper .posts {
@@ -274,6 +259,43 @@ section.additional-sections .tumblr-wrapper .posts .story p.date {
     font-size: 11px;
     line-height: 16px;
     margin: 0 0 10px;
+}
+
+@media screen and (max-width: 700px) {
+    section.additional-sections .twitter-timeline-wrapper,
+    section.additional-sections .tumblr-wrapper {
+        float: none;
+        margin-bottom: 84px;
+        width: 100%;
+    }
+
+    section.additional-sections .twitter-timeline-wrapper .logo,
+    section.additional-sections .tumblr-wrapper .logo {
+        left: 0;
+        right: auto;
+        top: 0;
+    }
+
+    section.additional-sections .twitter-timeline-wrapper .spacer,
+    section.additional-sections .tumblr-wrapper .spacer {
+        height: 64px;
+    }
+}
+
+body.adblock section.additional-sections .tumblr-wrapper {
+    float: none;
+    margin-bottom: 64px;
+    width: 100%;
+}
+
+body.adblock section.additional-sections .tumblr-wrapper .logo {
+    left: 0;
+    right: auto;
+    top: 0;
+}
+
+body.adblock section.additional-sections .tumblr-wrapper .spacer {
+    height: 64px;
 }
 
 section.additional-sections .projects {
